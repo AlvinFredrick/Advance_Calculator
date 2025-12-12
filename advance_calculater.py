@@ -7,7 +7,8 @@ from tkinter import messagebox
 
 expr = ""   # Global expression string
 
-# ------------------ CALCULATOR FUNCTIONS ------------------
+# -CALCULATOR FUNCTIONS
+#  ------------------
 def press(key):
     global expr
     expr += str(key)
@@ -61,7 +62,7 @@ def equal():
         display.set("**Error**")
         expr = ""
 
-# ---------- SCIENTIFIC MODE TOGGLE ----------
+# -SCIENTIFIC MODE TOGGLE ----------
 def toggle_scientific():
     if sci_frame.winfo_ismapped():
         sci_frame.grid_remove()
@@ -70,18 +71,18 @@ def toggle_scientific():
         sci_frame.grid()
         sci_button.config(text="Scientific Mode OFF")
 
-# ------------------ PAGE MANAGEMENT ------------------
+# -PAGE MANAGEMENT ------------------
 def show_frame(frame):
     for f in [calc_frame, currency_frame, length_frame, temp_frame, date_frame]:
         f.grid_remove()
     frame.grid(row=1, column=0, padx=10, pady=10)
 
-# ------------------ MAIN WINDOW ------------------
+# - MAIN WINDOW ------------------
 root = Tk()
 root.title("Advance Calculator")
 root.resizable(False, False)
 
-# ------------------ TOP MENU BUTTONS ------------------
+#  TOP MENU BUTTONS ------------------
 menu_frame = Frame(root)
 menu_frame.grid(row=0, column=0, pady=10)
 
@@ -91,7 +92,7 @@ Button(menu_frame, text="Length", width=12, command=lambda: show_frame(length_fr
 Button(menu_frame, text="Temperature", width=12, command=lambda: show_frame(temp_frame)).grid(row=0, column=3, padx=5)
 Button(menu_frame, text="Date", width=12, command=lambda: show_frame(date_frame)).grid(row=0, column=4, padx=5)
 
-# ================== CALCULATOR FRAME ==================
+#  CALCULATOR FRAME ==================
 calc_frame = Frame(root, bd=2, relief="ridge")
 # Display
 display = StringVar()
@@ -163,7 +164,7 @@ sci_button = Button(calc_frame, text="Scientific Mode OFF", command=toggle_scien
                     bg="orange", fg="black", font=("Arial", 11, "bold"))
 sci_button.grid(row=row+2, column=0, columnspan=5, pady=10)
 
-# ================== CURRENCY FRAME ==================
+# =CURRENCY FRAME ==================
 currency_frame = Frame(root, bd=2, relief="ridge")
 Label(currency_frame, text="Amount").grid(row=0, column=0)
 amt = StringVar()
@@ -186,7 +187,7 @@ def convert_currency():
         messagebox.showerror("Error","Invalid input")
 Button(currency_frame, text="Convert", command=convert_currency).grid(row=3,column=0,columnspan=2,pady=5)
 
-# ================== LENGTH FRAME ==================
+# LENGTH FRAME ==================
 length_frame = Frame(root, bd=2, relief="ridge")
 Label(length_frame, text="Length").grid(row=0,column=0)
 length_val = StringVar()
@@ -209,7 +210,7 @@ def convert_length():
         messagebox.showerror("Error","Invalid input")
 Button(length_frame, text="Convert", command=convert_length).grid(row=2,column=0,columnspan=2,pady=5)
 
-# ================== TEMPERATURE FRAME ==================
+# =TEMPERATURE FRAME ==================
 temp_frame = Frame(root, bd=2, relief="ridge")
 Label(temp_frame, text="Temperature").grid(row=0,column=0)
 temp_val = StringVar()
@@ -232,7 +233,7 @@ def convert_temperature():
         messagebox.showerror("Error","Invalid input")
 Button(temp_frame, text="Convert", command=convert_temperature).grid(row=2,column=0,columnspan=2,pady=5)
 
-# ================== DATE FRAME ==================
+# == DATE FRAME ==================
 date_frame = Frame(root, bd=2, relief="ridge")
 Label(date_frame, text="Date 1 (YYYY-MM-DD)").grid(row=0,column=0)
 d1 = StringVar()
